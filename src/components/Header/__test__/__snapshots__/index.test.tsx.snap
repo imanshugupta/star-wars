@@ -3,10 +3,10 @@
 exports[`<Header /> match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="container-fluid border-bottom"
+    class="container-fluid text-light header"
   >
     <div
-      class="container "
+      class="container"
     >
       <div
         class="py-3 d-flex"
@@ -14,15 +14,18 @@ exports[`<Header /> match the snapshot 1`] = `
         <div>
           <img
             alt="logo"
+            class="logo-img"
             height="100"
-            src="/star-wars-logo.png"
+            src="/logo.jpg"
           />
         </div>
         <div
           class="mt-auto ms-3"
         >
           <h1>
-            <i>
+            <i
+              style="font-weight: 800;"
+            >
               Characters
             </i>
           </h1>

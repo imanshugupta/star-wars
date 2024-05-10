@@ -6,14 +6,15 @@ import {
   characterSelector,
   fetchData,
 } from "store/reducers/characters";
-import { Table, Button } from "reactstrap";
+import { Badge, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 const CharacterList = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
 
-  const { characters, isLoading, error, previous, next } =
+  const { characters, isLoading, error, previous, next, totalPages, page } =
     useSelector(characterSelector);
 
   useEffect(() => {
@@ -35,43 +36,40 @@ const CharacterList = () => {
   else if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <Table striped hover bordered>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Gender </th>
-            <th>Home Planet </th>
-            <th>Suffice </th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {characters.map((character, i) => (
-            <tr key={i}>
-              <th>{i + 1}</th>
-              <td>{character.name}</td>
-              <td>{character.gender} </td>
-              <td>{character.homeworld}</td>
-              <td>{character.url} </td>
-              <td>
-                <Button
-                  color="success"
-                  size="sm"
-                  onClick={() => handleViewClick(character)}
-                >
-                  View
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+    <div className="text-light">
+      <div className="list-view">
+        <div className="row font-bold">
+          <div className="col-1">#</div>
+          <div className="col-md-4 col-6">Name</div>
+          <div className="col-md-2 col-3">Gender</div>
+          <div className="col d-none d-md-block">Home Planet</div>
+          <div className="col-md-1 col-2 text-center">Action</div>
+        </div>
+        {characters.map((character, i) => (
+          <div className="row list-item" key={i}>
+            <div className="col-1">{i + 1}</div>
+            <div className="col-md-4 col-6">{character.name}</div>
+            <div className="col-md-2 col-3">{character.gender} </div>
+            <div className="col d-none d-md-block">{character.homeworld}</div>
+            <div className="col-md-1 col-2 text-center">
+              <b
+                role="button"
+                className="text-danger"
+                onClick={() => handleViewClick(character)}
+                style={{ fontSize: "18px" }}
+              >
+                {">>"}
+              </b>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <div className="mt-4 text-center">
+      <div className="mt-4 d-flex">
         <Button
-          color="primary"
+          className="ms-4"
+          color="danger"
+          size="sm"
           disabled={!previous}
           onClick={() => handlePrevNext(false)}
         >
@@ -79,12 +77,18 @@ const CharacterList = () => {
         </Button>
         <Button
           className="ms-3"
-          color="primary"
+          color="danger"
+          size="sm"
           disabled={!next}
           onClick={() => handlePrevNext(true)}
         >
           Next
         </Button>
+        <div className="ms-auto">
+          <Badge color="dark">
+            {page}/{totalPages} page
+          </Badge>
+        </div>
       </div>
     </div>
   );

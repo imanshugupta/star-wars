@@ -3,6 +3,8 @@ import { Loader } from "components/Loader";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Character } from "store/reducers/characters";
+import "./index.css";
+import { Button } from "reactstrap";
 
 interface Planet {
   name: string;
@@ -67,54 +69,67 @@ const CharacterDetail = () => {
 
   if (isLoading) return <Loader />;
   return (
-    <div className="bg-light p-4 rounded mt-3">
-      <div className="d-flex">
-        <h1>
-          <b>{character?.name}</b>
-        </h1>
-        <div className="mt-3 ms-3">
-          <i>{`(${character?.gender})`}</i>
-        </div>
-      </div>
-      <div className="mt-5">
-        <div>
-          <b>Hair Color - {character?.hair_color}</b>
-        </div>
-        <div>
-          <b>Eye Color - {character?.eye_color}</b>
-        </div>
-
-        {planet && (
-          <div className="row">
-            <h4 className="col-12 mt-4 border-bottom pb-2">
-              <b>Planet - {planet?.name}</b>
-            </h4>
-            <div className="col-12 col-md-4">
-              Rotation Period - {planet?.rotation_period}
-            </div>
-            <div className="col-12 col-md-4">
-              Orbital Period - {planet?.orbital_period}
-            </div>
-            <div className="col-12 col-md-4">Diameter - {planet.diameter}</div>
-            <div className="col-12 col-md-4">climate - {planet.climate}</div>
-            <div className="col-12 col-md-4">Gravity - {planet.gravity}</div>
-            <div className="col-12 col-md-4">terrain - {planet.terrain}</div>
-            <div className="col-12 col-md-4">
-              surface_water - {planet.surface_water}
-            </div>
-            <div className="col-12 col-md-4">
-              population - {planet.population}
-            </div>
+    <div>
+      <div className="detail-box p-4 rounded mt-3">
+        <div className="d-flex">
+          <h1>
+            <b>{character?.name}</b>
+          </h1>
+          <div className="mt-3 ms-3">
+            <i>{`(${character?.gender})`}</i>
           </div>
-        )}
+          <div className="ms-auto"></div>
+        </div>
+        <div className="mt-5">
+          <div>
+            <b>Hair Color - {character?.hair_color}</b>
+          </div>
+          <div>
+            <b>Eye Color - {character?.eye_color}</b>
+          </div>
 
-        <h4 className="col-12 mt-4 border-bottom pb-2">
-          <b>Movies</b>
-        </h4>
-        {movies.map((movie, i) => (
-          <div key={i}>{movie}</div>
-        ))}
+          {planet && (
+            <div className="row">
+              <h4 className="col-12 mt-4 border-bottom pb-2">
+                <b>Planet - {planet?.name}</b>
+              </h4>
+              <div className="col-12 col-md-4">
+                Rotation Period - {planet?.rotation_period}
+              </div>
+              <div className="col-12 col-md-4">
+                Orbital Period - {planet?.orbital_period}
+              </div>
+              <div className="col-12 col-md-4">
+                Diameter - {planet.diameter}
+              </div>
+              <div className="col-12 col-md-4">climate - {planet.climate}</div>
+              <div className="col-12 col-md-4">Gravity - {planet.gravity}</div>
+              <div className="col-12 col-md-4">terrain - {planet.terrain}</div>
+              <div className="col-12 col-md-4">
+                surface_water - {planet.surface_water}
+              </div>
+              <div className="col-12 col-md-4">
+                population - {planet.population}
+              </div>
+            </div>
+          )}
+
+          <h4 className="col-12 mt-4 border-bottom pb-2">
+            <b>Movies</b>
+          </h4>
+          {movies.map((movie, i) => (
+            <div key={i}>{movie}</div>
+          ))}
+        </div>
       </div>
+      <Button
+        className="ms-3 mt-4"
+        color="danger"
+        size="sm"
+        onClick={() => window.history.back()}
+      >
+        Back
+      </Button>
     </div>
   );
 };

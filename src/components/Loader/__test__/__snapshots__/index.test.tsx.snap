@@ -6,7 +6,7 @@ exports[`<Loader /> match the snapshot 1`] = `
     class="loader"
   >
     <div
-      class="spinner-border-lg spinner-border"
+      class="spinner-border-sm spinner-border"
       role="status"
     >
       <span

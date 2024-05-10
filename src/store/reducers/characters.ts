@@ -30,6 +30,7 @@ interface State {
   next: boolean;
   previous: boolean;
   page: number;
+  totalPages: number;
 }
 
 const initialState: State = {
@@ -37,6 +38,7 @@ const initialState: State = {
   error: null,
   characters: [],
   page: 0,
+  totalPages: 0,
   previous: false,
   next: true,
   count: 0,
@@ -44,7 +46,7 @@ const initialState: State = {
 
 export const fetchData = createAsyncThunk(
   "counter/fetchData",
-  async (next: boolean, { getState }) => {
+  async (next: boolean = true, { getState }) => {
     const state: any = getState();
     let page = state.characters.page;
     if (next) page++;
@@ -73,6 +75,7 @@ const characterSlice = createSlice({
         state.previous = !!previous;
         state.characters = results;
         state.page = page;
+        state.totalPages = Math.ceil(count / 10);
         console.log(results);
       })
       .addCase(fetchData.rejected, (state) => {

@@ -1,0 +1,9 @@
+.header {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0%;
+  box-shadow: 0 0 15px black;
+  border-bottom: 1px solid #dadada23;
+  position: relative;
+  z-index: 11;
+}

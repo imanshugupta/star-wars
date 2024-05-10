@@ -1,9 +1,10 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Header } from "components/Header";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import { Loader } from "components/Loader";
-import CharacterList from "pages/CharacterList";
-import CharacterDetail from "pages/CharacterDetail";
+
+const CharacterList = React.lazy(() => import("pages/CharacterList"));
+const CharacterDetail = React.lazy(() => import("pages/CharacterDetail"));
 
 function App() {
   const elements = useRoutes([
@@ -12,12 +13,12 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className="bg-dark orbitron-regular app-container">
       <Header />
-      <div className="container mt-3 mb-4">
+      <div className="container py-4 text-light">
         <Suspense fallback={<Loader />}>{elements}</Suspense>
       </div>
-    </>
+    </div>
   );
 }
 

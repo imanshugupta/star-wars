@@ -1,0 +1,20 @@
+.list-view {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  border: 1px solid #dadada10;
+}
+.list-item {
+  border-top: 1px solid #dadada23;
+  margin-top: 4px;
+  padding-top: 8px;
+}
+.list-view .list-item:hover {
+  font-size: 15px;
+}
+
+.font-bold {
+  font-weight: 800;
+}

@@ -6,7 +6,7 @@ describe("<Header />", () => {
     render(<Header />);
     const logo = screen.getByAltText("logo");
     expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute("src", "/star-wars-logo.png");
+    expect(logo).toHaveAttribute("src", "/logo.jpg");
     expect(logo).toHaveAttribute("height", "100");
   });
 

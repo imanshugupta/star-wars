@@ -1,10 +1,10 @@
-import './index.scss'
-import { Spinner } from 'reactstrap'
+import "./index.css";
+import { Spinner } from "reactstrap";
 
 export const Loader = () => {
-    return (
-        <div className="loader">
-            <Spinner size={'lg'} />
-        </div>
-    )
-}
+  return (
+    <div className="loader">
+      <Spinner size={"sm"} />
+    </div>
+  );
+};
